@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🍦 Sorveteria do Paraíso - 100 Sabores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        /* ─── RESET & BASE ─── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink: #ff6b8a;
+            --pink-light: #ffd1dc;
+            --pink-dark: #e8436e;
+            --yellow: #f9ca24;
+            --cream: #fef9f0;
+            --brown: #6d4c2a;
+            --brown-light: #c9a87c;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --radius: 20px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--cream);
+            color: #2d1b0e;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        .logo {
+            font-family: 'Fredoka One', cursive;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ─── SCROLLBAR ─── */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--cream);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--pink);
+            border-radius: 10px;
+        }
+
+        /* ─── HEADER ─── */
+        header {
+            background: linear-gradient(135deg, #ff6b8a 0%, #ff8a9e 50%, #f9ca24 100%);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(255, 107, 138, 0.3);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            color: #fff;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 6px 16px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .nav-links .badge {
+            background: #fff;
+            color: var(--pink);
+            border-radius: 30px;
+            padding: 6px 18px;
+            font-weight: 800;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            background: linear-gradient(135deg, #fef9f0 0%, #ffd1dc 100%);
+            padding: 60px 0 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🍦🍨🍧🍦🍨🍧';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.06;
+            top: -20px;
+            right: -40px;
+            transform: rotate(15deg);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 3.4rem;
+            color: var(--pink-dark);
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .hero h1 .emoji-big {
+            font-size: 3.8rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #5a3d2b;
+            max-width: 600px;
+            margin: 0 auto 20px;
+            font-weight: 600;
+        }
+
+        .hero .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .hero .stat-item {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+            font-size: 1.1rem;
+            color: var(--brown);
+        }
+
+        .hero .stat-item span {
+            color: var(--pink-dark);
+            font-size: 1.6rem;
+            font-family: 'Fredoka One', cursive;
+            margin-right: 4px;
+        }
+
+        /* ─── SEARCH & FILTER ─── */
+        .controls {
+            background: #fff;
+            padding: 24px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 78px;
+            z-index: 50;
+        }
+
+        .controls-inner {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px 12px 48px;
+            border: 2px solid #f0e0d8;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: 'Nunito', sans-serif;
+            background: var(--cream);
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: var(--pink);
+            box-shadow: 0 0 0 4px rgba(255, 107, 138, 0.15);
+        }
+
+        .search-box .icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border: 2px solid #f0e0d8;
+            border-radius: 50px;
+            background: transparent;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--brown);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--pink);
+            background: var(--pink-light);
+        }
+
+        .filter-btn.active {
+            background: var(--pink);
+            border-color: var(--pink);
+            color: #fff;
+        }
+
+        /* ─── FLAVOR GRID ─── */
+        .section-title {
+            font-size: 2.4rem;
+            text-align: center;
+            margin: 40px 0 12px;
+            color: var(--brown);
+            position: relative;
+        }
+
+        .section-title .emoji {
+            font-size: 2.6rem;
+        }
+
+        .section-sub {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #8a6d5a;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .flavor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding-bottom: 40px;
+        }
+
+        .flavor-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 20px 16px 16px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+            position: relative;
+            cursor: default;
+        }
+
+        .flavor-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--pink-light);
+            box-shadow: 0 12px 40px rgba(255, 107, 138, 0.15);
+        }
+
+        .flavor-card .emoji {
+            font-size: 2.8rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .flavor-card .name {
+            font-weight: 800;
+            font-size: 1rem;
+            color: var(--brown);
+            line-height: 1.3;
+        }
+
+        .flavor-card .desc {
+            font-size: 0.78rem;
+            color: #8a6d5a;
+            margin-top: 4px;
+            line-height: 1.4;
+            opacity: 0.8;
+        }
+
+        .flavor-card .tag {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 2px 12px;
+            border-radius: 20px;
+            background: var(--pink-light);
+            color: var(--pink-dark);
+        }
+
+        .flavor-card .tag.fruit {
+            background: #ffecd6;
+            color: #d68a3a;
+        }
+        .flavor-card .tag.chocolate {
+            background: #e8d5c4;
+            color: #6d4c2a;
+        }
+        .flavor-card .tag.nut {
+            background: #f0e0d0;
+            color: #8b6b4a;
+        }
+        .flavor-card .tag.exotic {
+            background: #d4f0e0;
+            color: #2a7a5a;
+        }
+        .flavor-card .tag.dessert {
+            background: #fce4ec;
+            color: #b5466a;
+        }
+        .flavor-card .tag.candy {
+            background: #f3d4f0;
+            color: #8a4a7a;
+        }
+        .flavor-card .tag.spiced {
+            background: #f5e6d0;
+            color: #a0703a;
+        }
+        .flavor-card .tag.creamy {
+            background: #e8f0f8;
+            color: #3a6a8a;
+        }
+        .flavor-card .tag.signature {
+            background: #fce4b8;
+            color: #b87a2a;
+        }
+        .flavor-card .tag.classic {
+            background: #e8e0d8;
+            color: #5a4a3a;
+        }
+
+        .flavor-card .favorite {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            font-size: 1rem;
+            opacity: 0.3;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .flavor-card .favorite:hover {
+            opacity: 0.8;
+            transform: scale(1.2);
+        }
+        .flavor-card .favorite.active {
+            opacity: 1;
+            color: var(--pink);
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 50px 0;
+            font-size: 1.2rem;
+            color: #8a6d5a;
+        }
+
+        .no-results span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* ─── CONES ─── */
+        .cones-section {
+            background: linear-gradient(180deg, #fef9f0 0%, #ffd1dc 100%);
+            padding: 40px 0 50px;
+            margin-top: 20px;
+        }
+
+        .cones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 24px;
+        }
+
+        .cone-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 24px 16px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .cone-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--yellow);
+        }
+
+        .cone-card .emoji {
+            font-size: 3.4rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .cone-card .name {
+            font-weight: 800;
+            font-size: 1rem;
+            color: var(--brown);
+        }
+
+        .cone-card .desc {
+            font-size: 0.8rem;
+            color: #8a6d5a;
+            margin-top: 4px;
+        }
+
+        .cone-card .price {
+            display: inline-block;
+            margin-top: 8px;
+            font-weight: 800;
+            color: var(--pink-dark);
+            background: var(--pink-light);
+            padding: 2px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* ─── TOPPINGS & SAUCES ─── */
+        .toppings-section {
+            padding: 40px 0 50px;
+        }
+
+        .toppings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 16px;
+        }
+
+        .topping-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 18px 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .topping-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--yellow);
+        }
+
+        .topping-card .emoji {
+            font-size: 2.4rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .topping-card .name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--brown);
+        }
+
+        .topping-card .type {
+            font-size: 0.7rem;
+            color: #8a6d5a;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-top: 2px;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--brown);
+            color: #f0e0d8;
+            padding: 30px 0 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        footer .logo-footer {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.6rem;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        footer .social {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 12px 0;
+            font-size: 1.6rem;
+        }
+
+        footer .social a {
+            color: #f0e0d8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        footer .social a:hover {
+            color: var(--yellow);
+            transform: scale(1.2);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero .stats {
+                gap: 12px;
+            }
+            .hero .stat-item {
+                font-size: 0.9rem;
+                padding: 8px 18px;
+            }
+            .controls-inner {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .search-box {
+                max-width: 100%;
+            }
+            .filter-group {
+                justify-content: center;
+            }
+            .flavor-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 14px;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .header-inner {
+                flex-direction: column;
+                align-items: center;
+            }
+            .nav-links {
+                justify-content: center;
+            }
+            .logo {
+                font-size: 1.4rem;
+            }
+            .cones-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            }
+            .toppings-grid {
+                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .flavor-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .flavor-card {
+                padding: 14px 10px;
+            }
+            .flavor-card .emoji {
+                font-size: 2rem;
+            }
+            .flavor-card .name {
+                font-size: 0.85rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero .stat-item span {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <span>🍦</span> Sorveteria do Paraíso
+            </div>
+            <div class="nav-links">
+                <a href="#sabores">Sabores</a>
+                <a href="#casquinhas">Casquinhas</a>
+                <a href="#coberturas">Coberturas</a>
+                <a href="#" class="badge">✨ 100+ Sabores</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero">
+        <div class="container">
+            <h1>
+                <span class="emoji-big">🍨</span>
+                O Paraíso do Sorvete
+                <span class="emoji-big">🍧</span>
+            </h1>
+            <p>
+                Os melhores sorvetes artesanais com <strong>100 sabores</strong> exclusivos,
+                casquinhas crocantes e coberturas irresistíveis!
+            </p>
+            <div class="stats">
+                <div class="stat-item"><span>100</span> Sabores</div>
+                <div class="stat-item"><span>8</span> Casquinhas</div>
+                <div class="stat-item"><span>25+</span> Coberturas</div>
+                <div class="stat-item"><span>❤️</span> Feito com amor</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CONTROLES ═══ -->
+    <div class="controls" id="controls">
+        <div class="container controls-inner">
+            <div class="search-box">
+                <span class="icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Buscar sabor..." autocomplete="off" />
+            </div>
+            <div class="filter-group" id="filterGroup">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="classic">Clássicos</button>
+                <button class="filter-btn" data-filter="fruit">Frutas</button>
+                <button class="filter-btn" data-filter="chocolate">Chocolates</button>
+                <button class="filter-btn" data-filter="nut">Nuts</button>
+                <button class="filter-btn" data-filter="exotic">Exóticos</button>
+                <button class="filter-btn" data-filter="dessert">Sobremesas</button>
+                <button class="filter-btn" data-filter="candy">Doces</button>
+                <button class="filter-btn" data-filter="signature">Assinatura</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ SABORES ═══ -->
+    <section id="sabores">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="emoji">🍦</span> Nossos 100 Sabores
+                <span class="emoji">🍦</span>
+            </h2>
+            <p class="section-sub" id="resultCount">Mostrando 100 sabores</p>
+            <div class="flavor-grid" id="flavorGrid"></div>
+        </div>
+    </section>
+
+    <!-- ═══ CASQUINHAS ═══ -->
+    <section class="cones-section" id="casquinhas">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="emoji">🧇</span> Tipos de Casquinha
+                <span class="emoji">🧇</span>
+            </h2>
+            <p class="section-sub">Escolha a casquinha perfeita para seu sorvete</p>
+            <div class="cones-grid" id="conesGrid"></div>
+        </div>
+    </section>
+
+    <!-- ═══ COBERTURAS & CALDAS ═══ -->
+    <section class="toppings-section" id="coberturas">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="emoji">🍫</span> Coberturas & Caldas
+                <span class="emoji">🍫</span>
+            </h2>
+            <p class="section-sub">Finalize seu sorvete com as melhores coberturas</p>
+            <div class="toppings-grid" id="toppingsGrid"></div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="container">
+            <div class="logo-footer">🍦 Sorveteria do Paraíso</div>
+            <div class="social">
+                <a href="#">📱</a>
+                <a href="#">📸</a>
+                <a href="#">🐦</a>
+                <a href="#">📘</a>
+            </div>
+            <p>© 2026 — 100 sabores de pura felicidade • Feito com ❤️</p>
+            <p style="font-size:0.75rem; margin-top:6px; opacity:0.5;">
+                Aberto todos os dias • Das 10h às 22h
+            </p>
+        </div>
+    </footer>
+
+    <!-- ═══ JAVASCRIPT ═══ -->
+    <script>
+        // ─── DADOS ───
+
+        // 100 SABORES
+        const flavors = [
+            // Clássicos (1-10)
+            { name: 'Baunilha', desc: 'Clássica e cremosa, com fava de baunilha', emoji: '🍦', category: 'classic' },
+            { name: 'Chocolate Belga', desc: 'Intenso e aveludado', emoji: '🍫', category: 'chocolate' },
+            { name: 'Morango', desc: 'Feito com morangos frescos', emoji: '🍓', category: 'fruit' },
+            { name: 'Creme', desc: 'Sabor suave e irresistível', emoji: '🥛', category: 'classic' },
+            { name: 'Chocolate Branco', desc: 'Doce e cremoso', emoji: '🤍', category: 'chocolate' },
+            { name: 'Flocos', desc: 'Chocolate com flocos crocantes', emoji: '🍫', category: 'chocolate' },
+            { name: 'Napolitano', desc: 'Três camadas em uma', emoji: '🍨', category: 'classic' },
+            { name: 'Café', desc: 'Com grãos selecionados', emoji: '☕', category: 'classic' },
+            { name: 'Pistache', desc: 'Com pistache italiano', emoji: '🟢', category: 'nut' },
+            { name: 'Coco', desc: 'Creamy com leite de coco', emoji: '🥥', category: 'fruit' },
+
+            // Frutas (11-20)
+            { name: 'Maracujá', desc: 'Azedinho e refrescante', emoji: '🟡', category: 'fruit' },
+            { name: 'Manga', desc: 'Doce e suculenta', emoji: '🥭', category: 'fruit' },
+            { name: 'Limão Siciliano', desc: 'Refrescante e cítrico', emoji: '🍋', category: 'fruit' },
+            { name: 'Framboesa', desc: 'Com pedacinhos da fruta', emoji: '🍇', category: 'fruit' },
+            { name: 'Abacaxi', desc: 'Doce e tropical', emoji: '🍍', category: 'fruit' },
+            { name: 'Banana', desc: 'Cremoso com banana nanica', emoji: '🍌', category: 'fruit' },
+            { name: 'Cereja', desc: 'Com cerejas em calda', emoji: '🍒', category: 'fruit' },
+            { name: 'Pêssego', desc: 'Sabor suave e perfumado', emoji: '🍑', category: 'fruit' },
+            { name: 'Kiwi', desc: 'Refrescante e levemente ácido', emoji: '🥝', category: 'fruit' },
+            { name: 'Açaí', desc: 'Energético e cremoso', emoji: '🫐', category: 'fruit' },
+
+            // Chocolates (21-30)
+            { name: 'Chocolate Meio Amargo', desc: 'Equilíbrio perfeito', emoji: '🍫', category: 'chocolate' },
+            { name: 'Chocolate com Laranja', desc: 'Cítrico e intenso', emoji: '🍊', category: 'chocolate' },
+            { name: 'Chocolate com Menta', desc: 'Refrescante e crocante', emoji: '🌿', category: 'chocolate' },
+            { name: 'Brownie', desc: 'Com pedaços de brownie', emoji: '🧁', category: 'dessert' },
+            { name: 'Trufa de Chocolate', desc: 'Cremoso como uma trufa', emoji: '🍬', category: 'chocolate' },
+            { name: 'Chocolate Alemão', desc: 'Com castanhas e coco', emoji: '🇩🇪', category: 'chocolate' },
+            { name: 'Chocolate Suíço', desc: 'Leitoso e aveludado', emoji: '🇨🇭', category: 'chocolate' },
+            { name: 'Cappuccino', desc: 'Café com chocolate', emoji: '☕', category: 'chocolate' },
+            { name: 'Chocolate com Pimenta', desc: 'Doce com um toque picante', emoji: '🌶️', category: 'chocolate' },
+            { name: 'Chocolate com Caramelo', desc: 'Cobertura de caramelo', emoji: '🍯', category: 'chocolate' },
+
+            // Nuts (31-40)
+            { name: 'Amendoim', desc: 'Crocante e salgado', emoji: '🥜', category: 'nut' },
+            { name: 'Castanha do Pará', desc: 'Sabor amazônico', emoji: '🌰', category: 'nut' },
+            { name: 'Noz Pecã', desc: 'Com caramelo e nozes', emoji: '🌰', category: 'nut' },
+            { name: 'Amêndoa', desc: 'Cremoso com amêndoas', emoji: '🥜', category: 'nut' },
+            { name: 'Avelã', desc: 'Com avelãs torradas', emoji: '🌰', category: 'nut' },
+            { name: 'Macadâmia', desc: 'Sabor suave e refinado', emoji: '🥜', category: 'nut' },
+            { name: 'Castanha de Caju', desc: 'Cremoso e crocante', emoji: '🥜', category: 'nut' },
+            { name: 'Nougat', desc: 'Com mel e amêndoas', emoji: '🍯', category: 'nut' },
+            { name: 'Praliné', desc: 'Caramelo com avelãs', emoji: '🍬', category: 'nut' },
+            { name: 'Gianduia', desc: 'Chocolate com avelã', emoji: '🍫', category: 'nut' },
+
+            // Exóticos (41-50)
+            { name: 'Tamarindo', desc: 'Agridoce e exótico', emoji: '🟤', category: 'exotic' },
+            { name: 'Cajá', desc: 'Sabor tropical brasileiro', emoji: '🟠', category: 'exotic' },
+            { name: 'Graviola', desc: 'Doce e exótico', emoji: '🟢', category: 'exotic' },
+            { name: 'Cupuaçu', desc: 'Cremoso e amazônico', emoji: '🟤', category: 'exotic' },
+            { name: 'Pitaya', desc: 'Colorido e refrescante', emoji: '🩷', category: 'exotic' },
+            { name: 'Jabuticaba', desc: 'Sabor único e doce', emoji: '🟣', category: 'exotic' },
+            { name: 'Cacau', desc: 'Puro e intenso', emoji: '🟤', category: 'exotic' },
+            { name: 'Bacuri', desc: 'Cremoso e perfumado', emoji: '🟡', category: 'exotic' },
+            { name: 'Mangostão', desc: 'Rainha das frutas', emoji: '🟣', category: 'exotic' },
+            { name: 'Lichia', desc: 'Doce e floral', emoji: '🩷', category: 'exotic' },
+
+            // Sobremesas (51-60)
+            { name: 'Cheesecake', desc: 'Com calda de frutas vermelhas', emoji: '🍰', category: 'dessert' },
+            { name: 'Pavê de Chocolate', desc: 'Camadas cremosas', emoji: '🍫', category: 'dessert' },
+            { name: 'Torta de Limão', desc: 'Refrescante e doce', emoji: '🥧', category: 'dessert' },
+            { name: 'Pudim', desc: 'Sabor de pudim de leite', emoji: '🍮', category: 'dessert' },
+            { name: 'Bolo de Cenoura', desc: 'Com cobertura de chocolate', emoji: '🥕', category: 'dessert' },
+            { name: 'Mousse de Maracujá', desc: 'Leve e azedinho', emoji: '🟡', category: 'dessert' },
+            { name: 'Tiramisu', desc: 'Clássico italiano', emoji: '🇮🇹', category: 'dessert' },
+            { name: 'Panacota', desc: 'Cremoso e suave', emoji: '🍮', category: 'dessert' },
+            { name: 'Crème Brûlée', desc: 'Com crosta caramelizada', emoji: '🔥', category: 'dessert' },
+            { name: 'Brownie com Sorvete', desc: 'O melhor dos dois mundos', emoji: '🍨', category: 'dessert' },
+
+            // Doces (61-70)
+            { name: 'Brigadeiro', desc: 'O clássico brasileiro', emoji: '🍬', category: 'candy' },
+            { name: 'Beijinho', desc: 'Coco e leite condensado', emoji: '🥥', category: 'candy' },
+            { name: 'Doce de Leite', desc: 'Cremoso e caramelizado', emoji: '🍯', category: 'candy' },
+            { name: 'Paçoca', desc: 'Com paçoca esfarelada', emoji: '🥜', category: 'candy' },
+            { name: 'Cajuzinho', desc: 'Castanha e açúcar', emoji: '🌰', category: 'candy' },
+            { name: 'Rocambole', desc: 'De doce de leite', emoji: '🍥', category: 'candy' },
+            { name: 'Marshmallow', desc: 'Super cremoso e doce', emoji: '☁️', category: 'candy' },
+            { name: 'Algodão Doce', desc: 'Sabor de parque de diversões', emoji: '🍭', category: 'candy' },
+            { name: 'Pirulito', desc: 'Sabor de frutas', emoji: '🍭', category: 'candy' },
+            { name: 'Caramelo Salgado', desc: 'Doce com toque de sal', emoji: '🧂', category: 'candy' },
+
+            // Especiarias / Ervas (71-80)
+            { name: 'Canela', desc: 'Aveludado com canela', emoji: '🪵', category: 'spiced' },
+            { name: 'Gengibre', desc: 'Picante e refrescante', emoji: '🟤', category: 'spiced' },
+            { name: 'Lavanda', desc: 'Floral e relaxante', emoji: '🪻', category: 'spiced' },
+            { name: 'Hortelã', desc: 'Refrescante e crocante', emoji: '🌿', category: 'spiced' },
+            { name: 'Chá Verde', desc: 'Sutil e leve', emoji: '🍵', category: 'spiced' },
+            { name: 'Baunilha com Especiarias', desc: 'Toque de cardamomo', emoji: '🪵', category: 'spiced' },
+            { name: 'Cúrcuma', desc: 'Dourado e anti-inflamatório', emoji: '🟡', category: 'spiced' },
+            { name: 'Cardamomo', desc: 'Aromático e exótico', emoji: '🟢', category: 'spiced' },
+            { name: 'Noz-moscada', desc: 'Aveludado com especiarias', emoji: '🌰', category: 'spiced' },
+            { name: 'Chai', desc: 'Chá indiano com leite', emoji: '🍵', category: 'spiced' },
+
+            // Cremosos / Especiais (81-90)
+            { name: 'Creme de Leite', desc: 'Super cremoso', emoji: '🥛', category: 'creamy' },
+            { name: 'Leite Condensado', desc: 'Doce e cremoso', emoji: '🥛', category: 'creamy' },
+            { name: 'Nata', desc: 'Cremoso como nata fresca', emoji: '🥛', category: 'creamy' },
+            { name: 'Iogurte Grego', desc: 'Cremoso e levemente azedo', emoji: '🥛', category: 'creamy' },
+            { name: 'Mascarpone', desc: 'Queijo italiano cremoso', emoji: '🧀', category: 'creamy' },
+            { name: 'Ricota', desc: 'Leve e cremoso', emoji: '🧀', category: 'creamy' },
+            { name: 'Creme de Avelã', desc: 'Cremoso e crocante', emoji: '🍫', category: 'creamy' },
+            { name: 'Creme de Amendoim', desc: 'Nutritivo e delicioso', emoji: '🥜', category: 'creamy' },
+            { name: 'Leite de Ovelha', desc: 'Cremoso e suave', emoji: '🐑', category: 'creamy' },
+            { name: 'Creme de Coco', desc: 'Tropical e cremoso', emoji: '🥥', category: 'creamy' },
+
+            // Assinatura (91-100)
+            { name: 'Paraíso de Frutas', desc: 'Mix de frutas vermelhas', emoji: '🌈', category: 'signature' },
+            { name: 'Chocolate Supremo', desc: 'O mais intenso da casa', emoji: '🏆', category: 'signature' },
+            { name: 'Caramelo Crocante', desc: 'Com pedaços de caramelo', emoji: '🍯', category: 'signature' },
+            { name: 'Tropical Dream', desc: 'Manga, maracujá e coco', emoji: '🌴', category: 'signature' },
+            { name: 'Noite Italiana', desc: 'Tiramisu com pistache', emoji: '🇮🇹', category: 'signature' },
+            { name: 'Amor de Verão', desc: 'Morango com rosas', emoji: '🌹', category: 'signature' },
+            { name: 'Floresta Negra', desc: 'Cereja e chocolate', emoji: '🌲', category: 'signature' },
+            { name: 'Céu de Açúcar', desc: 'Algodão doce e caramelo', emoji: '☁️', category: 'signature' },
+            { name: 'Tesouro Dourado', desc: 'Caramelo salgado e nozes', emoji: '💰', category: 'signature' },
+            { name: 'Felicidade Pura', desc: 'O sabor da felicidade', emoji: '✨', category: 'signature' },
+        ];
+
+        // CASQUINHAS
+        const cones = [
+            { name: 'Waffle Clássica', emoji: '🧇', desc: 'Crocante e dourada', price: 'R$ 2,00' },
+            { name: 'Waffle Chocolate', emoji: '🧇', desc: 'Com cacau na massa', price: 'R$ 2,50' },
+            { name: 'Waffle Colorida', emoji: '🌈', desc: 'Arco-íris crocante', price: 'R$ 3,00' },
+            { name: 'Casquinha Tradicional', emoji: '🍦', desc: 'A clássica de todos', price: 'R$ 1,50' },
+            { name: 'Casquinha de Chocolate', emoji: '🍫', desc: 'Cobertura de chocolate', price: 'R$ 2,00' },
+            { name: 'Casquinha de Caramelo', emoji: '🍯', desc: 'Com calda de caramelo', price: 'R$ 2,00' },
+            { name: 'Copinho Waffle', emoji: '🥣', desc: 'Formato de tigela', price: 'R$ 2,50' },
+            { name: 'Casquinha Gigante', emoji: '🍦', desc: 'Tamanho família', price: 'R$ 3,50' },
+        ];
+
+        // COBERTURAS & CALDAS
+        const toppings = [
+            { name: 'Granulado Colorido', emoji: '🌈', type: 'granulado' },
+            { name: 'Granulado de Chocolate', emoji: '🍫', type: 'granulado' },
+            { name: 'Amendoim Crocante', emoji: '🥜', type: 'nuts' },
+            { name: 'Castanha de Caju', emoji: '🌰', type: 'nuts' },
+            { name: 'Nozes Picadas', emoji: '🌰', type: 'nuts' },
+            { name: 'Coco Ralado', emoji: '🥥', type: 'coconut' },
+            { name: 'Coco Queimado', emoji: '🔥', type: 'coconut' },
+            { name: 'Morango Fatiado', emoji: '🍓', type: 'fruit' },
+            { name: 'Banana Fatiada', emoji: '🍌', type: 'fruit' },
+            { name: 'Kiwi Fatiado', emoji: '🥝', type: 'fruit' },
+            { name: 'Calda de Chocolate', emoji: '🍫', type: 'sauce' },
+            { name: 'Calda de Caramelo', emoji: '🍯', type: 'sauce' },
+            { name: 'Calda de Morango', emoji: '🍓', type: 'sauce' },
+            { name: 'Calda de Frutas Vermelhas', emoji: '🍇', type: 'sauce' },
+            { name: 'Calda de Doce de Leite', emoji: '🥛', type: 'sauce' },
+            { name: 'Marshmallow', emoji: '☁️', type: 'soft' },
+            { name: 'Chantilly', emoji: '🤍', type: 'soft' },
+            { name: 'Creme de Avelã', emoji: '🍫', type: 'soft' },
+            { name: 'Paçoca Esfarelada', emoji: '🥜', type: 'brazilian' },
+            { name: 'Brigadeiro', emoji: '🍬', type: 'brazilian' },
+            { name: 'Beijinho', emoji: '🥥', type: 'brazilian' },
+            { name: 'Cajuzinho', emoji: '🌰', type: 'brazilian' },
+            { name: 'Mel', emoji: '🍯', type: 'sauce' },
+            { name: 'Nutella', emoji: '🍫', type: 'soft' },
+            { name: 'Leite Condensado', emoji: '🥛', type: 'sauce' },
+        ];
+
+        // ─── RENDER ───
+
+        const flavorGrid = document.getElementById('flavorGrid');
+        const searchInput = document.getElementById('searchInput');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const resultCount = document.getElementById('resultCount');
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function renderFlavors() {
+            const filtered = flavors.filter(f => {
+                const matchSearch = f.name.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                    f.desc.toLowerCase().includes(currentSearch.toLowerCase());
+                const matchFilter = currentFilter === 'all' || f.category === currentFilter;
+                return matchSearch && matchFilter;
+            });
+
+            resultCount.textContent = `Mostrando ${filtered.length} ${filtered.length === 1 ? 'sabor' : 'sabores'}`;
+
+            if (filtered.length === 0) {
+                flavorGrid.innerHTML = `
+                            <div class="no-results">
+                                <span>😢</span>
+                                Nenhum sabor encontrado :(<br>
+                                <small style="font-weight:400;">Tente outra busca ou filtro</small>
+                            </div>
+                        `;
+                return;
+            }
+
+            flavorGrid.innerHTML = filtered.map(f => `
+                        <div class="flavor-card" data-category="${f.category}">
+                            <span class="favorite" onclick="toggleFavorite(this)">🤍</span>
+                            <span class="emoji">${f.emoji}</span>
+                            <div class="name">${f.name}</div>
+                            <div class="desc">${f.desc}</div>
+                            <span class="tag ${f.category}">${f.category}</span>
+                        </div>
+                    `).join('');
+        }
+
+        function toggleFavorite(el) {
+            el.classList.toggle('active');
+            el.textContent = el.classList.contains('active') ? '❤️' : '🤍';
+        }
+
+        // ─── FILTROS ───
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.filter;
+                renderFlavors();
+            });
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            currentSearch = e.target.value;
+            renderFlavors();
+        });
+
+        // ─── RENDER CONES ───
+
+        function renderCones() {
+            const grid = document.getElementById('conesGrid');
+            grid.innerHTML = cones.map(c => `
+                        <div class="cone-card">
+                            <span class="emoji">${c.emoji}</span>
+                            <div class="name">${c.name}</div>
+                            <div class="desc">${c.desc}</div>
+                            <span class="price">${c.price}</span>
+                        </div>
+                    `).join('');
+        }
+
+        // ─── RENDER TOPPINGS ───
+
+        function renderToppings() {
+            const grid = document.getElementById('toppingsGrid');
+            grid.innerHTML = toppings.map(t => `
+                        <div class="topping-card">
+                            <span class="emoji">${t.emoji}</span>
+                            <div class="name">${t.name}</div>
+                            <div class="type">${t.type}</div>
+                        </div>
+                    `).join('');
+        }
+
+        // ─── INIT ───
+
+        renderFlavors();
+        renderCones();
+        renderToppings();
+
+        // ─── KEYBOARD SHORTCUT: FOCUS SEARCH ───
+
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        });
+    </script>
+</body>
+</html>
